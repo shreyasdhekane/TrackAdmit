@@ -204,7 +204,6 @@ export const updateUniversityFields = mutation({
     documentsRequired: v.optional(v.array(v.string())),
     submitted: v.optional(v.boolean()),
     result: v.optional(v.string()),
-    createdAt: v.optional(v.float64()),
   },
   handler: async (ctx, args) => {
     const identity = await ctx.auth.getUserIdentity();

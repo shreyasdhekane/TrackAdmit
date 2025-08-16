@@ -78,7 +78,7 @@ export default function EditUniversityPage() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      const { _id, ...rest } = formData as University;
+      const { _id, _creationTime, ...rest } = formData as University; // strip both
       await updateUniversity({
         id: _id,
         ...rest,
@@ -88,7 +88,6 @@ export default function EditUniversityPage() {
       console.error("Error updating university:", error);
     }
   };
-
   return (
     <div className="max-w-4xl mx-auto px-6 py-10">
       <h1 className="text-3xl font-bold mb-6">Edit University Application</h1>
