@@ -448,7 +448,7 @@ export default function UniversityPage() {
             tier={uni.tier}
             rank={uni.rank}
             notes={uni.notes}
-            onEdit={handleEdit}
+            onEdit={() => handleEdit}
             onDelete={() => handleDelete(uni._id)}
           />
         ))}

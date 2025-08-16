@@ -31,6 +31,7 @@ interface UniversityUpdates {
   fee: string;
   tier: string;
   rank: string;
+  notes?: string;
 }
 
 export interface UniversityCardProps {
