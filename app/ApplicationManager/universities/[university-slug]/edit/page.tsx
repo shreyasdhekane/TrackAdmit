@@ -78,18 +78,16 @@ export default function EditUniversityPage() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      // Strip internal fields and slug before submission
-      const {
-        _id,
-        _creationTime: _,
-        createdAt: __,
-        slug: ___,
-        userId: ____,
-        ...rest
-      } = formData as University;
+      const universityData = formData as University;
+      const updateData: Omit<
+        University,
+        "_creationTime" | "createdAt" | "slug" | "userId"
+      > = {
+        ...universityData,
+      };
       await updateUniversity({
-        id: _id,
-        ...rest,
+        id: universityData._id,
+        ...updateData,
       });
       router.push(`/ApplicationManager/universities/${universitySlug}`);
     } catch (error) {
