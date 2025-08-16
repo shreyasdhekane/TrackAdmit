@@ -1,6 +1,6 @@
 "use client";
 import { ReactNode, ComponentType, JSX } from "react";
-import { motion, MotionProps, Variants } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import React from "react";
 
 export type PresetType =
@@ -15,11 +15,6 @@ export type PresetType =
   | "rotate"
   | "swing";
 
-type MotionComponentProps = MotionProps & {
-  as?: keyof JSX.IntrinsicElements | ComponentType<any>;
-  children?: ReactNode;
-};
-
 export type AnimatedGroupProps = {
   children: ReactNode;
   className?: string;
@@ -28,8 +23,8 @@ export type AnimatedGroupProps = {
     item?: Variants;
   };
   preset?: PresetType;
-  as?: keyof JSX.IntrinsicElements | ComponentType<any>;
-  asChild?: keyof JSX.IntrinsicElements | ComponentType<any>;
+  as?: keyof JSX.IntrinsicElements | ComponentType<unknown>;
+  asChild?: keyof JSX.IntrinsicElements | ComponentType<unknown>;
 };
 
 const defaultContainerVariants: Variants = {
@@ -117,6 +112,7 @@ function AnimatedGroup({
     item: addDefaultVariants(preset ? presetVariants[preset] : {}),
     container: addDefaultVariants(defaultContainerVariants),
   };
+
   const containerVariants = variants?.container || selectedVariants.container;
   const itemVariants = variants?.item || selectedVariants.item;
 
