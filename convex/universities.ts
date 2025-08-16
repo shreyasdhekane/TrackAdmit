@@ -185,7 +185,6 @@ export const getUniversityBySlug = query({
     return { university };
   },
 });
-
 export const updateUniversityFields = mutation({
   args: {
     id: v.id("universities"),
@@ -225,10 +224,15 @@ export const updateUniversityFields = mutation({
       throw new Error("Not authorized to update this university");
     }
 
-    // Create update object with only provided fields
+    // Create update object with only provided fields, excluding slug and createdAt
     const updates: Record<string, any> = {};
     for (const [key, value] of Object.entries(args)) {
-      if (key !== "id" && value !== undefined) {
+      if (
+        key !== "id" &&
+        key !== "slug" &&
+        key !== "createdAt" &&
+        value !== undefined
+      ) {
         updates[key] = value;
       }
     }
