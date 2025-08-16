@@ -15,7 +15,6 @@ import {
   Calendar,
   DollarSign,
   Star,
-  Edit,
   Trash2,
   MoveUpRight,
 } from "lucide-react";
@@ -70,7 +69,6 @@ export default function UniversityCard({
   fee,
   tier,
   rank,
-  onEdit,
   onDelete,
 }: UniversityCardProps) {
   return (
@@ -129,30 +127,6 @@ export default function UniversityCard({
 
               <div className="flex gap-2">
                 <TooltipProvider>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <button
-                        onClick={() =>
-                          onEdit(id, {
-                            name,
-                            program,
-                            country,
-                            city,
-                            deadline,
-                            status,
-                            fee,
-                            tier,
-                            rank,
-                          })
-                        }
-                        className="text-blue-600 hover:text-blue-700 transition-colors"
-                      >
-                        <Edit size={18} />
-                      </button>
-                    </TooltipTrigger>
-                    <TooltipContent>Edit</TooltipContent>
-                  </Tooltip>
-
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <button

@@ -31,10 +31,12 @@ export function NavProjects({
         ))}
         <SidebarMenuItem>
           <SidebarMenuButton asChild>
-            <Link href="/ApplicationManager/universities">
-              <span className="text-muted-foreground">
-                View all universities <ArrowUpRight />
-              </span>
+            <Link
+              href="/ApplicationManager/universities"
+              className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              <span>View all universities</span>
+              <ArrowUpRight className="w-4 h-4" />
             </Link>
           </SidebarMenuButton>
         </SidebarMenuItem>

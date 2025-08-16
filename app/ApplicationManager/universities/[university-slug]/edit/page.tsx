@@ -49,17 +49,14 @@ export default function EditUniversityPage() {
   // Initialize form with current data when loaded
   useEffect(() => {
     if (universityData?.university) {
-      setFormData(universityData.university);
+      setFormData({
+        ...universityData.university,
+        // Ensure all required fields are set
+        testsRequired: universityData.university.testsRequired || [],
+        documentsRequired: universityData.university.documentsRequired || [],
+      });
     }
   }, [universityData]);
-
-  if (!universityData) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        Loading...
-      </div>
-    );
-  }
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -68,27 +65,41 @@ export default function EditUniversityPage() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleArrayChange = (name: string, value: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value.split(",").map((item) => item.trim()),
-    }));
+  const handleArrayChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    const arrayValue = value
+      ? value
+          .split(",")
+          .map((item) => item.trim())
+          .filter((item) => item)
+      : [];
+    setFormData((prev) => ({ ...prev, [name]: arrayValue }));
   };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      const universityData = formData as University;
-      const updateData: Omit<
-        University,
-        "_creationTime" | "createdAt" | "slug" | "userId"
-      > = {
-        ...universityData,
-      };
+      if (!universityData?.university) return;
+
       await updateUniversity({
-        id: universityData._id,
-        ...updateData,
+        id: universityData.university._id, // Use the correct ID path
+        name: formData.name,
+        program: formData.program,
+        country: formData.country,
+        city: formData.city,
+        deadline: formData.deadline,
+        status: formData.status,
+        tier: formData.tier,
+        fee: formData.fee,
+        rank: formData.rank,
+        notes: formData.notes,
+        universityUrl: formData.universityUrl,
+        testsRequired: formData.testsRequired,
+        documentsRequired: formData.documentsRequired,
+        result: formData.result,
+        submitted: formData.submitted,
       });
+
       router.push(`/ApplicationManager/universities/${universitySlug}`);
     } catch (error) {
       console.error("Error updating university:", error);
@@ -244,9 +255,7 @@ export default function EditUniversityPage() {
               id="testsRequired"
               name="testsRequired"
               value={formData.testsRequired?.join(", ") || ""}
-              onChange={(e) =>
-                handleArrayChange("testsRequired", e.target.value)
-              }
+              onChange={handleArrayChange}
             />
           </div>
 
@@ -258,9 +267,7 @@ export default function EditUniversityPage() {
               id="documentsRequired"
               name="documentsRequired"
               value={formData.documentsRequired?.join(", ") || ""}
-              onChange={(e) =>
-                handleArrayChange("documentsRequired", e.target.value)
-              }
+              onChange={handleArrayChange} // Just pass the function directly
             />
           </div>
 
