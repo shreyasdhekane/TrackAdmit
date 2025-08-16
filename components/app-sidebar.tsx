@@ -1,13 +1,7 @@
 "use client";
 
 import type * as React from "react";
-import {
-  AppWindow,
-  BookOpen,
-  GraduationCap,
-  Link2,
-  School,
-} from "lucide-react";
+import { AppWindow, BookOpen, GraduationCap, School } from "lucide-react";
 
 import { NavMain } from "@/components/nav-main";
 import { NavProjects } from "@/components/nav-projects";

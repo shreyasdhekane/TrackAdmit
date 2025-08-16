@@ -79,8 +79,14 @@ export default function EditUniversityPage() {
     e.preventDefault();
     try {
       // Strip internal fields and slug before submission
-      const { _id, _creationTime, createdAt, slug, userId, ...rest } =
-        formData as University;
+      const {
+        _id,
+        _creationTime: _,
+        createdAt: __,
+        slug: ___,
+        userId: ____,
+        ...rest
+      } = formData as University;
       await updateUniversity({
         id: _id,
         ...rest,
