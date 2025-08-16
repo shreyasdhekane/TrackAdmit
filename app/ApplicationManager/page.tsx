@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const page = () => {
@@ -9,6 +10,7 @@ const page = () => {
       <p className="text-muted-foreground">
         Start your college application today.
       </p>
+      <Link href={"/ApplicationManager/universities"}>+ Add University</Link>
     </div>
   );
 };
