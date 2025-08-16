@@ -9,8 +9,15 @@ import {
   ExternalLink,
 } from "lucide-react";
 
+interface DocumentStats {
+  total: number;
+  completed: number;
+  inProgress: number;
+  notStarted: number;
+}
 interface UniversityStatsProps {
   university: University;
+  documentStats?: DocumentStats;
 }
 
 export function UniversityStats({ university }: UniversityStatsProps) {
