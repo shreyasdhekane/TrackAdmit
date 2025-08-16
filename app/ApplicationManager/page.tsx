@@ -10,7 +10,9 @@ const page = () => {
       <p className="text-muted-foreground">
         Start your college application today.
       </p>
-      <Link href={"/ApplicationManager/universities"}>+ Add University</Link>
+      <button className="text-sm font-semibold bg-primary text-primary-foreground px-4 py-2 rounded-md border ">
+        <Link href={"/ApplicationManager/universities"}>+ Add University</Link>
+      </button>
     </div>
   );
 };
