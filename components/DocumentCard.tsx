@@ -17,7 +17,7 @@ export interface DocumentCardProps {
   status: string;
   fileUrl?: string;
   notes?: string;
-  createdAt?: number;
+  createdAt: number;
   onEdit: (
     id: string,
     updates: {

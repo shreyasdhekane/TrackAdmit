@@ -36,8 +36,8 @@ interface Document {
   title: string;
   type: string;
   status: string;
-  fileUrl: string;
-  notes: string;
+  fileUrl?: string;
+  notes?: string;
 }
 
 export default function DocumentsPage() {
