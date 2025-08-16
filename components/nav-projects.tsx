@@ -7,7 +7,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { Link2 } from "lucide-react";
+import { ArrowUpRight, Link2 } from "lucide-react";
 import Link from "next/link";
 
 export function NavProjects({
@@ -25,10 +25,7 @@ export function NavProjects({
         {universities.slice(0, 4).map((item) => (
           <SidebarMenuItem key={item.name}>
             <SidebarMenuButton asChild>
-              <a href={`${item.slug}`}>
-                <Link2 />
-                <span>{item.name}</span>
-              </a>
+              <span>{item.name}</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
         ))}
@@ -36,7 +33,7 @@ export function NavProjects({
           <SidebarMenuButton asChild>
             <Link href="/ApplicationManager/universities">
               <span className="text-muted-foreground">
-                View all universities +
+                View all universities <ArrowUpRight />
               </span>
             </Link>
           </SidebarMenuButton>

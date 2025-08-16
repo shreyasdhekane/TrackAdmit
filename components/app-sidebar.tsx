@@ -2,7 +2,6 @@
 
 import type * as React from "react";
 import { AppWindow, BookOpen, GraduationCap, School } from "lucide-react";
-
 import { NavMain } from "@/components/nav-main";
 import { NavProjects } from "@/components/nav-projects";
 import { NavUser } from "@/components/nav-user";
