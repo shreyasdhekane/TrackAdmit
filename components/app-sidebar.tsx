@@ -1,7 +1,13 @@
 "use client";
 
 import type * as React from "react";
-import { AppWindow, BookOpen, GraduationCap, Link, School } from "lucide-react";
+import {
+  AppWindow,
+  BookOpen,
+  GraduationCap,
+  Link2,
+  School,
+} from "lucide-react";
 
 import { NavMain } from "@/components/nav-main";
 import { NavProjects } from "@/components/nav-projects";
@@ -21,6 +27,7 @@ import { api } from "@/convex/_generated/api";
 import { useUser } from "@clerk/nextjs";
 import { useState, useEffect } from "react";
 import { User } from "@/lib/types";
+import Link from "next/link";
 
 const data = {
   navMain: [

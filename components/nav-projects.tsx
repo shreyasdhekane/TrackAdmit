@@ -1,7 +1,5 @@
 "use client";
 
-import { Link } from "lucide-react";
-
 import {
   SidebarGroup,
   SidebarGroupLabel,
@@ -9,6 +7,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { Link2 } from "lucide-react";
+import Link from "next/link";
 
 export function NavProjects({
   universities,
@@ -26,7 +26,7 @@ export function NavProjects({
           <SidebarMenuItem key={item.name}>
             <SidebarMenuButton asChild>
               <a href={`${item.slug}`}>
-                <Link />
+                <Link2 />
                 <span>{item.name}</span>
               </a>
             </SidebarMenuButton>
