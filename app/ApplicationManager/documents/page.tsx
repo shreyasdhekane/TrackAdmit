@@ -31,18 +31,20 @@ import { toast } from "sonner";
 import { User } from "@/lib/types";
 import DocumentCard from "@/components/DocumentCard";
 
+interface Document {
+  id: string;
+  title: string;
+  type: string;
+  status: string;
+  fileUrl: string;
+  notes: string;
+}
+
 export default function DocumentsPage() {
   const { user, isLoaded } = useUser();
   const [open, setOpen] = useState(false);
   const router = useRouter();
-  const [editingDocument, setEditingDocument] = useState<{
-    id: string;
-    title: string;
-    type: string;
-    status: string;
-    fileUrl: string;
-    notes: string;
-  } | null>(null);
+  const [editingDocument, setEditingDocument] = useState<Document | null>(null);
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const updateDocument = useMutation(api.documents.updateDocument);
   const deleteDocument = useMutation(api.documents.removeDocument);
@@ -63,7 +65,7 @@ export default function DocumentsPage() {
   );
   const createDocument = useMutation(api.documents.createDocument);
 
-  const handleEdit = (id: string, document: any) => {
+  const handleEdit = (id: string, document: Omit<Document, "id">) => {
     setEditingDocument({
       id,
       title: document.title,
@@ -89,7 +91,7 @@ export default function DocumentsPage() {
 
       setEditingDocument(null);
       toast("Document updated successfully");
-    } catch (error) {
+    } catch {
       toast("Error updating document");
     }
   };
@@ -130,7 +132,7 @@ export default function DocumentsPage() {
 
       setOpen(false);
       toast("Document added successfully");
-    } catch (error) {
+    } catch {
       toast("Error creating document");
     }
   };

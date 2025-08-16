@@ -21,7 +21,10 @@ export function UniversityHeader({
   university,
   universitySlug,
 }: UniversityHeaderProps) {
-  const displayField = (value: any, fallback = "Not specified") =>
+  const displayField = (
+    value: string | undefined,
+    fallback = "Not specified",
+  ) =>
     value ? value : <span className="text-muted-foreground">{fallback}</span>;
 
   const getStatusBadge = (status: string) => {
@@ -33,11 +36,11 @@ export function UniversityHeader({
         return (
           <Badge className="bg-yellow-100 text-yellow-700">In Progress</Badge>
         );
-      case "Submitted":
+      case "submitted":
         return (
           <Badge className="bg-purple-100 text-purple-700">Submitted</Badge>
         );
-      case "Planning":
+      case "planning":
         return <Badge className="bg-blue-100 text-blue-700">Planning</Badge>;
       case "not_started":
       case "not started":
@@ -46,6 +49,7 @@ export function UniversityHeader({
         return <Badge>{status || "Unknown"}</Badge>;
     }
   };
+
   const getResultBadge = (result: string) => {
     switch (result?.toLowerCase()) {
       case "admit":
@@ -98,6 +102,7 @@ export function UniversityHeader({
         );
     }
   };
+
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-start">

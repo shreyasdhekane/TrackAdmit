@@ -36,7 +36,7 @@ export function UniversityMap({ city, country, name }: UniversityMapProps) {
         } else {
           setError(true);
         }
-      } catch (err) {
+      } catch {
         setError(true);
       }
     };
@@ -49,7 +49,7 @@ export function UniversityMap({ city, country, name }: UniversityMapProps) {
       <CardContent className="p-0">
         {error ? (
           <div className="p-4 text-center text-sm text-muted-foreground">
-            🌍 Oops! Couldn't locate <strong>{name}</strong> in{" "}
+            Oops! Couldn&apos;t locate <strong>{name}</strong> in{" "}
             <strong>
               {city}, {country}
             </strong>

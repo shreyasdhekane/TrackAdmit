@@ -1,5 +1,5 @@
 // DocumentCard.tsx
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import {
@@ -17,8 +17,17 @@ export interface DocumentCardProps {
   status: string;
   fileUrl?: string;
   notes?: string;
-  createdAt: number;
-  onEdit: (id: string, updates: any) => void;
+  createdAt?: number;
+  onEdit: (
+    id: string,
+    updates: {
+      title: string;
+      type: string;
+      status: string;
+      fileUrl?: string;
+      notes?: string;
+    },
+  ) => void;
   onDelete: (id: string) => void;
 }
 
@@ -29,7 +38,6 @@ export default function DocumentCard({
   status,
   fileUrl,
   notes,
-  createdAt,
   onEdit,
   onDelete,
 }: DocumentCardProps) {

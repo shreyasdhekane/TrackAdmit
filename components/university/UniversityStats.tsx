@@ -11,18 +11,9 @@ import {
 
 interface UniversityStatsProps {
   university: University;
-  documentStats: {
-    total: number;
-    completed: number;
-    inProgress: number;
-    notStarted: number;
-  };
 }
 
-export function UniversityStats({
-  university,
-  documentStats,
-}: UniversityStatsProps) {
+export function UniversityStats({ university }: UniversityStatsProps) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
       {/* Deadline */}

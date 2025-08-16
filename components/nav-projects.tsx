@@ -8,7 +8,6 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  useSidebar,
 } from "@/components/ui/sidebar";
 
 export function NavProjects({
@@ -19,8 +18,6 @@ export function NavProjects({
     slug: string;
   }[];
 }) {
-  const { isMobile } = useSidebar();
-
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
       <SidebarGroupLabel>Universities</SidebarGroupLabel>
@@ -37,11 +34,11 @@ export function NavProjects({
         ))}
         <SidebarMenuItem>
           <SidebarMenuButton asChild>
-            <a href="/ApplicationManager/universities">
+            <Link href="/ApplicationManager/universities">
               <span className="text-muted-foreground">
                 View all universities +
               </span>
-            </a>
+            </Link>
           </SidebarMenuButton>
         </SidebarMenuItem>
       </SidebarMenu>

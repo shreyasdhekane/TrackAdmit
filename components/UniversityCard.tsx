@@ -21,6 +21,18 @@ import {
 } from "lucide-react";
 import { Button } from "./ui/button";
 
+interface UniversityUpdates {
+  name: string;
+  program: string;
+  country: string;
+  city: string;
+  deadline: number;
+  status: string;
+  fee: string;
+  tier: string;
+  rank: string;
+}
+
 export interface UniversityCardProps {
   id: string;
   slug: string;
@@ -34,7 +46,7 @@ export interface UniversityCardProps {
   tier: string;
   rank: string;
   notes?: string;
-  onEdit: (id: string, updates: any) => void;
+  onEdit: (id: string, updates: UniversityUpdates) => void;
   onDelete: (id: string) => void;
 }
 
@@ -44,6 +56,7 @@ function daysUntilDeadline(deadline: number): number {
   const diffTime = deadlineDate.getTime() - today.getTime();
   return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 }
+
 export default function UniversityCard({
   id,
   slug,
@@ -60,9 +73,9 @@ export default function UniversityCard({
   onDelete,
 }: UniversityCardProps) {
   return (
-    <Card className="border border-border/50 hover:border-border shadow-sm hover:shadow-md transition-all duration-300  rounded-xl overflow-hidden group bg-card/50 hover:bg-card">
+    <Card className="border border-border/50 hover:border-border shadow-sm hover:shadow-md transition-all duration-300 rounded-xl overflow-hidden group bg-card/50 hover:bg-card">
+      {" "}
       <CardContent className="p-0">
-        {/* University Header with colored status bar */}
         <div className="bg-gradient-to-r from-accent/10 to-primary/5 p-4 ">
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3">
             <div className="space-y-1">

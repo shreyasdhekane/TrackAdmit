@@ -31,23 +31,40 @@ import { toast } from "sonner";
 import { User } from "@/lib/types";
 import UniversityCard from "@/components/UniversityCard";
 
+interface UniversityForm {
+  id: string;
+  name: string;
+  program: string;
+  country: string;
+  city: string;
+  deadline: string;
+  status: string;
+  tier: string;
+  fee: string;
+  rank: string;
+  notes: string;
+}
+
+interface UniversityData {
+  name: string;
+  program: string;
+  country: string;
+  city: string;
+  deadline: number;
+  status: string;
+  tier: string;
+  fee: string;
+  rank: string;
+  notes: string;
+  slug: string;
+}
+
 export default function UniversityPage() {
   const { user, isLoaded } = useUser();
   const [open, setOpen] = useState(false);
   const router = useRouter();
-  const [editingUniversity, setEditingUniversity] = useState<{
-    id: string;
-    name: string;
-    program: string;
-    country: string;
-    city: string;
-    deadline: string;
-    status: string;
-    tier: string;
-    fee: string;
-    rank: string;
-    notes: string;
-  } | null>(null);
+  const [editingUniversity, setEditingUniversity] =
+    useState<UniversityForm | null>(null);
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const updateUniversity = useMutation(api.universities.updateUniversity);
   const deleteUniversity = useMutation(api.universities.removeUniversity);
@@ -68,7 +85,10 @@ export default function UniversityPage() {
   );
   const createUniversity = useMutation(api.universities.createUniversity);
 
-  const handleEdit = (id: string, university: any) => {
+  const handleEdit = (
+    id: string,
+    university: Omit<UniversityData, "slug"> & { deadline: number },
+  ) => {
     setEditingUniversity({
       id,
       name: university.name,
@@ -83,6 +103,7 @@ export default function UniversityPage() {
       notes: university.notes || "",
     });
   };
+
   const handleUpdate = async () => {
     if (!editingUniversity) return;
 
@@ -103,7 +124,7 @@ export default function UniversityPage() {
 
       setEditingUniversity(null);
       toast("University updated successfully");
-    } catch (error) {
+    } catch {
       toast("Error updating university");
     }
   };
@@ -111,6 +132,7 @@ export default function UniversityPage() {
   const handleDelete = (id: Id<"universities">) => {
     deleteUniversity({ id });
   };
+
   const [form, setForm] = useState({
     name: "",
     program: "",
@@ -123,6 +145,7 @@ export default function UniversityPage() {
     rank: "",
     notes: "",
   });
+
   const handleCreate = async () => {
     if (!currentUser) return;
 
@@ -158,7 +181,7 @@ export default function UniversityPage() {
 
       setOpen(false);
       toast("University added successfully");
-    } catch (error) {
+    } catch {
       toast("Error creating university");
     }
   };

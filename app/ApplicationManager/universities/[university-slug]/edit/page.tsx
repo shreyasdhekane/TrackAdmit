@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Calendar } from "@/components/ui/calendar";
 import { format } from "date-fns";
 import {
   Select,
@@ -70,22 +69,20 @@ export default function EditUniversityPage() {
   };
 
   const handleArrayChange = (name: string, value: string) => {
-    const currentArray = (formData[name as keyof University] as string[]) || [];
-    const newArray = value.split(",").map((item) => item.trim());
-    setFormData((prev) => ({ ...prev, [name]: newArray }));
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value.split(",").map((item) => item.trim()),
+    }));
   };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      const { _id, _creationTime, slug, createdAt, userId, ...rest } =
-        formData as University;
-
+      const { _id, ...rest } = formData as University;
       await updateUniversity({
         id: _id,
         ...rest,
       });
-
       router.push(`/ApplicationManager/universities/${universitySlug}`);
     } catch (error) {
       console.error("Error updating university:", error);
