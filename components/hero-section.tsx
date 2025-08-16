@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { TextEffect } from "@/components/ui/text-effect";
@@ -152,11 +152,11 @@ export default function HeroSection() {
         <section className="bg-background md:pb-8">
           <Features />
         </section>
-        <section className="py-12 md:py-20">
+        <section id="about" className="py-12 md:py-20">
           <div className="mx-auto max-w-5xl space-y-8 px-6 md:space-y-16">
             <div className="relative z-10 mx-auto max-w-xl space-y-6 text-center">
               <h2 className="text-4xl font-medium lg:text-5xl">
-                Application Manager in Numbers
+                TrackAdmit in Numbers
               </h2>
               <p>
                 Helping students simplify their college journey. Built with real

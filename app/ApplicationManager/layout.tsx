@@ -11,8 +11,6 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 
-import { ModeToggle } from "@/components/ModeToggle";
-
 // This layout wraps all routes inside /applicationManager/*
 export default function ApplicationManagerLayout({
   children,

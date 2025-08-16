@@ -8,16 +8,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import {
-  FileText,
-  Link,
-  Calendar,
-  User,
-  Edit,
-  Trash2,
-  MoveUpRight,
-} from "lucide-react";
-import { Button } from "./ui/button";
+import { FileText, Link, User, Edit, Trash2 } from "lucide-react";
 
 export interface DocumentCardProps {
   id: string;

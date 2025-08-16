@@ -1,15 +1,7 @@
 "use client";
 
 import type * as React from "react";
-import {
-  AppWindow,
-  BookOpen,
-  Bot,
-  Command,
-  GraduationCap,
-  School,
-  SquareTerminal,
-} from "lucide-react";
+import { AppWindow, BookOpen, GraduationCap, School } from "lucide-react";
 
 import { NavMain } from "@/components/nav-main";
 import { NavProjects } from "@/components/nav-projects";
@@ -30,7 +22,6 @@ import { useUser } from "@clerk/nextjs";
 import { useState, useEffect } from "react";
 import { User } from "@/lib/types";
 
-// This is sample data.
 const data = {
   navMain: [
     {

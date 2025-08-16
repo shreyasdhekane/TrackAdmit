@@ -7,8 +7,8 @@ import { cn } from "@/lib/utils";
 import { SignedIn, SignedOut, UserButton } from "@clerk/clerk-react";
 
 const menuItems = [
-  { name: "Features", href: "#link" },
-  { name: "About", href: "#link" },
+  { name: "Features", href: "#features" },
+  { name: "About", href: "#about" },
 ];
 
 export const HeroHeader = () => {

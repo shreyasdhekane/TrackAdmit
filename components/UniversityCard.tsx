@@ -15,7 +15,6 @@ import {
   Calendar,
   DollarSign,
   Star,
-  StickyNote,
   Edit,
   Trash2,
   MoveUpRight,

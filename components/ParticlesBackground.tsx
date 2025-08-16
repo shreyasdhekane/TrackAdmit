@@ -14,7 +14,7 @@ export const ParticlesBackground = () => {
 
   const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
 
-  if (isMobile) return null; // 🚫 Skip particles on mobile
+  if (isMobile) return null;
   const color = theme === "dark" ? "#00ff88" : "#000000";
   return (
     <Particles
